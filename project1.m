@@ -1,6 +1,8 @@
 %%
 % *Hanyue Wang(NAU ID: wh259)， Xiaobai Li(NAU ID: xl253)*      
 %
+% GitHub link : https://github.com/HanyueW-9/499/blob/master/project1.m
+%
 % *MATLAB Lab*
 %
 % *Project 1*
@@ -49,13 +51,13 @@ output_SAheart = data(:,end);
 % data scale
 data = scale(data(:,1:end-1));
 % concat x and Y
-data = [data,output_SAheart]
+data = [data,output_SAheart];
 
 % split data 70% for training 30% for testing.
-[trainY,testY,validationY] = divideblock(data', .6, .2, .2); % 70% for training 30% for testing.
-trainData = trainY.'; 
-testData = testY.';
-validationData = validationY.';
+[trainX,testX,validationX] = divideblock(data', .6, .2, .2); % 70% for training 30% for testing.
+trainData = trainX.'; 
+testData = testX.';
+validationData = validationX.';
 
 result  = zeros(3,2);
 % output 0/1 in trainData testData validationData
@@ -64,7 +66,7 @@ result(2,1)=sum( testData(:,end)==0);  result(2,2)=sum( testData(:,end)==1);
 result(3,1)= sum( validationData(:,end)==0);result(3,2)=sum( validationData(:,end)==1); 
 
 % Gradientdescent and plot
-[weight,error,vali_error] = Gradientdescent(trainData(:,1:end-1),trainData(:,end),validationData(:,1:end-1),validationData(:,end),10000,0.000008)
+[weight,error,vali_error] = Gradientdescent(trainData(:,1:end-1),trainData(:,end),validationData(:,1:end-1),validationData(:,end),1000,0.00008)
 figure;
 index = find(error==min(error))
 hold on;
@@ -76,13 +78,13 @@ hold on;
 index = find(vali_error==min(vali_error))
 hold on;
 plot(index,vali_error(index),'ro')
-
+title('SAheart data set');
 % error in trainData testData validationData
 vali_label = [ones(size(validationData(:,1:end-1),1),1),validationData(:,1:end-1)]*weight;
 train_label =[ones(size(trainData(:,1:end-1),1),1),trainData(:,1:end-1)]*weight;
 test_label = [ones(size(testData(:,1:end-1),1),1),testData(:,1:end-1)]*weight;
 
-result1 = Labelresult(vali_label,validationData(:,end),train_label,trainData(:,end),test_label,testData(:,end))
+result1 = Labelresult(vali_label,validationData(:,end),train_label,trainData(:,end),test_label,testData(:,end));
 % 
 % Y = importdata('spam.data');
 % % import SAheart data set
@@ -96,8 +98,88 @@ result1 = Labelresult(vali_label,validationData(:,end),train_label,trainData(:,e
 % trainData1 = trainY.'; 
 % testData1 = testY.';
 % validationData1 = validationY.';
+hold off
+Y = importdata('spam.data');
+data2 = Y;
+output_spam = data2(:,end);
+% data scale
+data2 = scale(data2(:,1:end-1));
+% concat x and Y
+data2 = [data2,output_spam];
+
+[trainY,testY,validationY] = divideblock(data2', .6, .2, .2); % 70% for training 30% for testing.
+trainData2 = trainY.'; 
+testData2 = testY.';
+validationData2 = validationY.';
+
+result  = zeros(3,2);
+% output 0/1 in trainData testData validationData
+result(1,1)=sum( trainData2(:,end)==0);  result(1,2)=sum( trainData2(:,end)==1); 
+result(2,1)=sum( testData2(:,end)==0);  result(2,2)=sum( testData2(:,end)==1); 
+result(3,1)= sum( validationData2(:,end)==0);result(3,2)=sum( validationData2(:,end)==1); 
+
+[weight,error,vali_error] = Gradientdescent(trainData2(:,1:end-1),trainData2(:,end),validationData2(:,1:end-1),validationData2(:,end),1000,0.00008)
+figure;
+index = find(error==min(error))
+hold on;
+plot(error);
+plot(vali_error)
+legend('train','validation');
+plot(index,error(index),'ro')
+hold on;
+index = find(vali_error==min(vali_error))
+hold on;
+plot(index,vali_error(index),'ro')
+title('Spam data set');
+
+% error in trainData testData validationData
+vali_label2 = [ones(size(validationData2(:,1:end-1),1),1),validationData2(:,1:end-1)]*weight;
+train_label2 =[ones(size(trainData2(:,1:end-1),1),1),trainData2(:,1:end-1)]*weight;
+test_label2 = [ones(size(testData2(:,1:end-1),1),1),testData2(:,1:end-1)]*weight;
+
+result2 = Labelresult(vali_label2,validationData2(:,end),train_label2,trainData2(:,end),test_label2,testData2(:,end))
 
 
+hold off
+Z = importdata('zip.train');
+data3 = Z;
+output_zip = data3(:,end);
+% data scale
+data3 = scale(data3(:,1:end-1));
+% concat x and Y
+data3 = [data3,output_zip];
+
+[trainZ,testZ,validationZ] = divideblock(data3', .6, .2, .2); % 70% for training 30% for testing.
+trainData3 = trainZ.'; 
+testData3 = testZ.';
+validationData3 = validationZ.';
+
+result  = zeros(3,2);
+% output 0/1 in trainData testData validationData
+result(1,1)=sum( trainData3(:,end)==0);  result(1,2)=sum( trainData3(:,end)==1); 
+result(2,1)=sum( testData3(:,end)==0);  result(2,2)=sum( testData3(:,end)==1); 
+result(3,1)= sum( validationData3(:,end)==0);result(3,2)=sum( validationData3(:,end)==1); 
+
+[weight,error,vali_error] = Gradientdescent(trainData3(:,1:end-1),trainData3(:,end),validationData3(:,1:end-1),validationData3(:,end),1000,0.00008)
+figure;
+index = find(error==min(error))
+hold on;
+plot(error);
+plot(vali_error)
+legend('train','validation');
+plot(index,error(index),'ro')
+hold on;
+index = find(vali_error==min(vali_error))
+hold on;
+plot(index,vali_error(index),'ro')
+title('Zip data set');
+
+% error in trainData testData validationData
+vali_label3 = [ones(size(validationData3(:,1:end-1),1),1),validationData3(:,1:end-1)]*weight;
+train_label3 =[ones(size(trainData3(:,1:end-1),1),1),trainData3(:,1:end-1)]*weight;
+test_label3 = [ones(size(testData3(:,1:end-1),1),1),testData3(:,1:end-1)]*weight;
+
+result3 = Labelresult(vali_label3,validationData3(:,end),train_label3,trainData3(:,end),test_label3,testData3(:,end))
 
 % function weightMatrix = Gradientdescent(X,y,maxIterations,stepSize)
 % weightVector = zeros(size(X,2)+1,1);
