@@ -54,8 +54,8 @@ data = scale(data(:,1:end-1));
 data = [data,output_SAheart];
 
 % split data 70% for training 30% for testing.
-[trainX,testX,validationX] = divideblock(data', .6, .2, .2); % 70% for training 30% for testing.
-trainData = trainX.'; 
+[trainX,testX,validationX] = divideblock(data', .6, .2, .2); % 60% for training 20% for testing. 20% for validation
+20%trainData = trainX.'; 
 testData = testX.';
 validationData = validationX.';
 
@@ -107,7 +107,7 @@ data2 = scale(data2(:,1:end-1));
 % concat x and Y
 data2 = [data2,output_spam];
 
-[trainY,testY,validationY] = divideblock(data2', .6, .2, .2); % 70% for training 30% for testing.
+[trainY,testY,validationY] = divideblock(data2', .6, .2, .2); % 60% for training 20% for testing. 20% for validation
 trainData2 = trainY.'; 
 testData2 = testY.';
 validationData2 = validationY.';
@@ -149,7 +149,7 @@ data3 = scale(data3(:,1:end-1));
 % concat x and Y
 data3 = [data3,output_zip];
 
-[trainZ,testZ,validationZ] = divideblock(data3', .6, .2, .2); % 70% for training 30% for testing.
+[trainZ,testZ,validationZ] = divideblock(data3', .6, .2, .2);  % 60% for training 20% for testing. 20% for validation
 trainData3 = trainZ.'; 
 testData3 = testZ.';
 validationData3 = validationZ.';
