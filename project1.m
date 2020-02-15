@@ -55,7 +55,7 @@ data = [data,output_SAheart];
 
 % split data 70% for training 30% for testing.
 [trainX,testX,validationX] = divideblock(data', .6, .2, .2); % 60% for training 20% for testing. 20% for validation
-20%trainData = trainX.'; 
+trainData = trainX.'; 
 testData = testX.';
 validationData = validationX.';
 
@@ -85,7 +85,11 @@ train_label =[ones(size(trainData(:,1:end-1),1),1),trainData(:,1:end-1)]*weight;
 test_label = [ones(size(testData(:,1:end-1),1),1),testData(:,1:end-1)]*weight;
 
 result1 = Labelresult(vali_label,validationData(:,end),train_label,trainData(:,end),test_label,testData(:,end));
-% 
+
+hold off;
+plot(error/(vali_error+error))
+xlabel('maxIterations');
+ylabel('error rate');
 % Y = importdata('spam.data');
 % % import SAheart data set
 % 
@@ -98,7 +102,6 @@ result1 = Labelresult(vali_label,validationData(:,end),train_label,trainData(:,e
 % trainData1 = trainY.'; 
 % testData1 = testY.';
 % validationData1 = validationY.';
-hold off
 Y = importdata('spam.data');
 data2 = Y;
 output_spam = data2(:,end);
@@ -139,8 +142,12 @@ test_label2 = [ones(size(testData2(:,1:end-1),1),1),testData2(:,1:end-1)]*weight
 
 result2 = Labelresult(vali_label2,validationData2(:,end),train_label2,trainData2(:,end),test_label2,testData2(:,end))
 
+hold off;
+plot(error/(vali_error+error))
+xlabel('maxIterations');
+ylabel('error rate');
 
-hold off
+
 Z = importdata('zip.train');
 data3 = Z;
 output_zip = data3(:,end);
@@ -181,6 +188,10 @@ test_label3 = [ones(size(testData3(:,1:end-1),1),1),testData3(:,1:end-1)]*weight
 
 result3 = Labelresult(vali_label3,validationData3(:,end),train_label3,trainData3(:,end),test_label3,testData3(:,end))
 
+hold off;
+plot(error/(vali_error+error))
+xlabel('maxIterations');
+ylabel('error rate');
 % function weightMatrix = Gradientdescent(X,y,maxIterations,stepSize)
 % weightVector = zeros(size(X,2)+1,1);
 % weightMatrix = zeros(size(X,2)+1,maxIterations);
