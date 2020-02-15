@@ -266,3 +266,19 @@ function A = scale(input)
         A(:,i) = A(:,i)/S(i)
     end
 end
+
+function weightMatrix = GD(X,y,maxIterations,stepSize)
+weightVector = zeros(size(X,2),1);
+weightMatrix = zeros(size(X,2),maxIterations);
+gradient = [];
+
+for k = 1:maxIterations
+    for m = 1:size(X,1)
+        h = 1./(1+exp(-X(m,:) * weightVector));
+        tmp = (h - y(m)) * X(m,:);
+        gradient = [gradient;tmp];
+    end  
+    gradient = mean(gradient);
+    weightVector = weightVector - stepSize*gradient';
+    weightMatrix(:,k) = weightVector;
+end
