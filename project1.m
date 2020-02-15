@@ -143,7 +143,7 @@ test_label2 = [ones(size(testData2(:,1:end-1),1),1),testData2(:,1:end-1)]*weight
 result2 = Labelresult(vali_label2,validationData2(:,end),train_label2,trainData2(:,end),test_label2,testData2(:,end))
 
 hold off;
-plot(error/(vali_error+error))
+plot(vali_error/error)
 xlabel('maxIterations');
 ylabel('error rate');
 
