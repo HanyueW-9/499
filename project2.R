@@ -2,7 +2,6 @@ library(tidyverse)
 library(class)
 library(ggplot2)
 library(data.table)
-library(ggplot2)
 
 ## Read spam data set and conver to X matrix and y vector we need for
 ## gradient descent.
