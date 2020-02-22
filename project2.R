@@ -44,6 +44,14 @@ NNCV<-function(X_mat,y_vec,X_new,num_folds=5,max_neighbors=20){
   return(out)
 }
 
+baseline<-function(train, test, cl){
+  return(0)
+}
+
+KNNCV<-function(train, test, cl){
+  y=knn(train, test, cl,out$three)
+}
+
 ## download spam data set to local directory, if it is not present.
 data<-read.table(url("https://web.stanford.edu/~hastie/ElemStatLearn/datasets/spam.data"))
 
