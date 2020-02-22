@@ -74,3 +74,7 @@ x=matrix(1:4)
 table(x,test_fold_vec)
 
 summary(y_vec)
+
+error1<-KfoldCV(X_mat,y_vec,baseline,fold_vec0,K=5)
+error2<-KfoldCV(X_mat,y_vec,KNNCV,fold_vec0,K=5)
+error3<-KfoldCV(X_mat,y_vec,knn1,fold_vec0,K=5)
