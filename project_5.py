@@ -101,8 +101,8 @@ if __name__ == "__main__":
     # plt.show()
     # ### For each of the three networks, define a variable called best_epochs which is the number of epochs
     # # which minimizes the validation loss.
-    best_dropout = 0.1
-    model1,loss1 = model(train_X,train_y,valid_X,valid_y,test_X,test_y,20,100,best_dropout)
+    best_parameter_value = 0.1
+    model1,loss1 = model(train_X,train_y,valid_X,valid_y,test_X,test_y,20,100,best_parameter_value)
 
     pre_y = model1.predict_classes(test_X)
     print(pre_y.shape)
