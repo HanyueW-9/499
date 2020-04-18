@@ -11,6 +11,6 @@ Project 2 K-fold cross-validation for hyper-parameter tuning and model compariso
 
 Project 3 neural network for binary classification (from scratch):https://github.com/HanyueW-9/499/blob/master/project3.R
 
-Project 4 neural network for binary classification (TensorFlow/keras):https://github.com/HanyueW-9/499/blob/master/project4
+Project 4 neural network for binary classification (TensorFlow/keras):https://github.com/HanyueW-9/499/blob/master/project4.py
 
 Project 5 demonstrating regularization/overfitting:https://github.com/HanyueW-9/499/blob/master/project_5.py
