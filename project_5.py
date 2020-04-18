@@ -103,7 +103,8 @@ if __name__ == "__main__":
     # # which minimizes the validation loss.
     best_parameter_value = 0.1
     model1,loss1 = model(train_X,train_y,valid_X,valid_y,test_X,test_y,20,100,best_parameter_value)
-
+    plt.plot(loss1[50:], c='r', linestyle='--')
+    
     pre_y = model1.predict_classes(test_X)
     print(pre_y.shape)
     print(test_y.shape)
