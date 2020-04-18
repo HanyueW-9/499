@@ -99,8 +99,7 @@ if __name__ == "__main__":
     plt.plot(loss4[50:], c='g', linestyle='-.')
     plt.legend(['dropout-0.5', 'dropout-0.3', 'dropout-0.2','dropout-0.1'])
     plt.show()
-    # ### For each of the three networks, define a variable called best_epochs which is the number of epochs
-    # # which minimizes the validation loss.
+  
     best_parameter_value = 0.1
     model1,loss1 = model(train_X,train_y,valid_X,valid_y,test_X,test_y,20,100,best_parameter_value)
     
