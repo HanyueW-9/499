@@ -62,19 +62,18 @@ def FCN(inputs, is_training=True):
         outputs = slim.fully_connected(net, 10, activation_fn=None, normalizer_fn=None, scope='fco')
     return outputs
 
-SOURCE_URL = 'http://yann.lecun.com/exdb/mnist/'
+SOURCE_URL = 'https://web.stanford.edu/~hastie/ElemStatLearn/data.html'
 DATA_DIRECTORY = "data"
 
-# Params for MNIST
+# Params
 IMAGE_SIZE = 16
 NUM_CHANNELS = 1
 PIXEL_DEPTH = 255
 NUM_LABELS = 10
 VALIDATION_SIZE = 5000  # Size of the validation set.
 
-# Download MNIST data
+# Download data
 def maybe_download(filename):
-    """Download the data from Yann's website, unless it's already here."""
     if not tf.gfile.Exists(DATA_DIRECTORY):
         tf.gfile.MakeDirs(DATA_DIRECTORY)
     filepath = os.path.join(DATA_DIRECTORY, filename)
