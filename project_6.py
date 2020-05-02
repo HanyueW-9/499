@@ -62,7 +62,7 @@ def FCN(inputs, is_training=True):
         outputs = slim.fully_connected(net, 10, activation_fn=None, normalizer_fn=None, scope='fco')
     return outputs
 
-SOURCE_URL = 'https://web.stanford.edu/~hastie/ElemStatLearn/data.html'
+SOURCE_URL = 'https://web.stanford.edu/~hastie/ElemStatLearn/datasets/zip.train.gz'
 DATA_DIRECTORY = "data"
 
 # Params
