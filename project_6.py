@@ -91,7 +91,7 @@ def get_data(path):
 
 # Extract the labels
 def extract_labels(labels):
-    """Extract the labels into a vector of int64 label IDs."""
+    #Extract the labels into a vector of int64 label IDs.
     labels = numpy.reshape(labels, [-1])
     one_hot_encoding = numpy.eye(NUM_LABELS)[labels]
     return one_hot_encoding
