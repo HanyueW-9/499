@@ -7,8 +7,10 @@ source code for first project: https://github.com/HanyueW-9/499/blob/master/proj
 
 Data set download from :  https://web.stanford.edu/~hastie/ElemStatLearn/data.html
 you can 
-'from six.moves import urllib'
-'SOURCE_URL = #data file path from internet '
+
+"from six.moves import urllib"
+"SOURCE_URL = #data file path from internet "
+to install the data set
 
 Project 1 Gradient descent for logistic regression : https://github.com/HanyueW-9/499/blob/master/project1.m
 
