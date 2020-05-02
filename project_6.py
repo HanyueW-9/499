@@ -186,8 +186,8 @@ def load_data(file):
     # df = numpy.reshape(df, [-1])
     return df
 
-# Prepare MNISt data
-def prepare_MNIST_data(Kth=0):
+# Prepare zip data
+def prepare_ZIP_data(Kth=0):
     #
     train_data_filename = os.path.join('data/fold_{}'.format(Kth), 'x_train')
     train_labels_filename = os.path.join('data/fold_{}'.format(Kth), 'y_train')
@@ -220,8 +220,8 @@ def prepare_MNIST_data(Kth=0):
 
     return train_total_data, train_size, valid_data, valid_labels, test_data, test_labels
 
-# Prepare MNISt data
-def prepare_MNIST_data2():
+# Prepare ZIP data
+def prepare_ZIP_data2():
     train_file = 'data/train.data'
     train_data, train_labels = load_test_data(train_file)
     train_labels = extract_labels(train_labels)
